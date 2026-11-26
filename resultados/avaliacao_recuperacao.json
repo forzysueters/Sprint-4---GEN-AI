@@ -1,0 +1,753 @@
+{
+  "metricas": {
+    "palavras": {
+      "hit@1": 0.458,
+      "hit@3": 0.667,
+      "mrr@5": 0.559
+    },
+    "palavras + filtro": {
+      "hit@1": 0.625,
+      "hit@3": 0.792,
+      "mrr@5": 0.715
+    },
+    "caracteres": {
+      "hit@1": 0.667,
+      "hit@3": 0.667,
+      "mrr@5": 0.677
+    },
+    "caracteres + filtro": {
+      "hit@1": 0.833,
+      "hit@3": 0.875,
+      "mrr@5": 0.854
+    },
+    "hibrido": {
+      "hit@1": 0.625,
+      "hit@3": 0.667,
+      "mrr@5": 0.665
+    },
+    "hibrido + filtro": {
+      "hit@1": 0.792,
+      "hit@3": 0.875,
+      "mrr@5": 0.833
+    },
+    "hibrido + filtro + tipo": {
+      "hit@1": 0.875,
+      "hit@3": 0.917,
+      "mrr@5": 0.896
+    }
+  },
+  "detalhes_hibrido_filtro": [
+    {
+      "pergunta": "quais os limites de vibração para base rígida",
+      "ativo": null,
+      "relevante": [
+        "DOC-01"
+      ],
+      "top5": [
+        "DOC-01§Limites de referência para máquinas de 15 kW a 300 kW (grupo 2)",
+        "DOC-06§Baseline operacional",
+        "DOC-01§Cuidados de interpretação",
+        "DOC-01§Zonas de severidade",
+        "DOC-06§Uso responsável"
+      ],
+      "posicao": 1
+    },
+    {
+      "pergunta": "o que significa zona D de severidade",
+      "ativo": null,
+      "relevante": [
+        "DOC-01"
+      ],
+      "top5": [
+        "DOC-01§Zonas de severidade",
+        "DOC-01§Objetivo",
+        "DOC-08§Situações que exigem avaliação de profissional responsável",
+        "DOC-01§Cuidados de interpretação",
+        "DOC-01§Limites de referência para máquinas de 15 kW a 300 kW (grupo 2)"
+      ],
+      "posicao": 1
+    },
+    {
+      "pergunta": "vibração alta com temperatura normal, o que pode ser",
+      "ativo": null,
+      "relevante": [
+        "DOC-02"
+      ],
+      "top5": [
+        "DOC-06§Classificador de falhas (Sprint 2)",
+        "DOC-01§Cuidados de interpretação",
+        "DOC-08§Situações que exigem avaliação de profissional responsável",
+        "DOC-04§Sintomas típicos",
+        "DOC-04§Verificações recomendadas"
+      ],
+      "posicao": null
+    },
+    {
+      "pergunta": "como fazer balanceamento do rotor",
+      "ativo": null,
+      "relevante": [
+        "DOC-02"
+      ],
+      "top5": [
+        "OS-20230025",
+        "OS-20230020",
+        "OS-20230028",
+        "OS-20230010",
+        "OS-20230005"
+      ],
+      "posicao": null
+    },
+    {
+      "pergunta": "temperatura e corrente subindo juntas no motor",
+      "ativo": null,
+      "relevante": [
+        "DOC-03"
+      ],
+      "top5": [
+        "DOC-03§Critério de escalonamento",
+        "DOC-06§Classificador de falhas (Sprint 2)",
+        "DOC-03§Sintomas típicos",
+        "DOC-02§Sintomas típicos",
+        "DOC-09§Motor MTR-06"
+      ],
+      "posicao": 1
+    },
+    {
+      "pergunta": "aletas sujas e ventilação obstruída",
+      "ativo": null,
+      "relevante": [
+        "DOC-03"
+      ],
+      "top5": [
+        "DOC-03§Possíveis causas",
+        "DOC-03§Verificações recomendadas",
+        "DOC-07§Hipóteses a investigar",
+        "OS-20230001",
+        "OS-20230030"
+      ],
+      "posicao": 1
+    },
+    {
+      "pergunta": "aceleração em g aumentando no mancal",
+      "ativo": null,
+      "relevante": [
+        "DOC-04"
+      ],
+      "top5": [
+        "DOC-04§Sintomas típicos",
+        "DOC-04§Verificações recomendadas",
+        "DOC-03§Sintomas típicos",
+        "DOC-05§Pontos de medição",
+        "DOC-01§Cuidados de interpretação"
+      ],
+      "posicao": 1
+    },
+    {
+      "pergunta": "ruído metálico e troca de rolamento",
+      "ativo": null,
+      "relevante": [
+        "DOC-04"
+      ],
+      "top5": [
+        "DOC-04§Critério de escalonamento",
+        "DOC-04§Ações corretivas",
+        "DOC-04§Verificações recomendadas",
+        "DOC-08§Princípio",
+        "OS-20230021"
+      ],
+      "posicao": 1
+    },
+    {
+      "pergunta": "quais sensores estão instalados nas portas do IO-Link",
+      "ativo": "FZ-ATV-01",
+      "relevante": [
+        "DOC-05"
+      ],
+      "top5": [
+        "DOC-05§Pontos de medição",
+        "DOC-01§Objetivo",
+        "DOC-02§Verificações iniciais (sem desmontagem)",
+        "DOC-05§Estados e ciclos operacionais",
+        "DOC-06§Baseline operacional"
+      ],
+      "posicao": 1
+    },
+    {
+      "pergunta": "qual o período de dados disponível do ativo da Forzy",
+      "ativo": "FZ-ATV-01",
+      "relevante": [
+        "DOC-05"
+      ],
+      "top5": [
+        "DOC-05§Período de dados disponível",
+        "DOC-05§Estados e ciclos operacionais",
+        "DOC-05§Identificação",
+        "DOC-01§Limites de referência para máquinas de 15 kW a 300 kW (grupo 2)",
+        "DOC-06§Classificador de falhas (Sprint 2)"
+      ],
+      "posicao": 1
+    },
+    {
+      "pergunta": "o isolation forest e o autoencoder discordam, por quê",
+      "ativo": null,
+      "relevante": [
+        "DOC-06"
+      ],
+      "top5": [
+        "DOC-06§Detecção de anomalias (Sprint 3)",
+        "CIC-3",
+        "CIC-4",
+        "CIC-6",
+        "CIC-2"
+      ],
+      "posicao": 1
+    },
+    {
+      "pergunta": "o classificador da sprint 2 serve para o ativo real",
+      "ativo": null,
+      "relevante": [
+        "DOC-06"
+      ],
+      "top5": [
+        "DOC-06§Classificador de falhas (Sprint 2)",
+        "DOC-03§Sintomas típicos",
+        "DOC-01§Limites de referência para máquinas de 15 kW a 300 kW (grupo 2)",
+        "DOC-01§Cuidados de interpretação",
+        "DOC-02§Sintomas típicos"
+      ],
+      "posicao": 1
+    },
+    {
+      "pergunta": "porta 2 mais quente que a porta 1 fora do normal",
+      "ativo": "FZ-ATV-01",
+      "relevante": [
+        "DOC-07"
+      ],
+      "top5": [
+        "DOC-05§Pontos de medição",
+        "DOC-07§Quando aplicar",
+        "DOC-07§Critério de escalonamento",
+        "DOC-06§Baseline operacional",
+        "DOC-02§Verificações iniciais (sem desmontagem)"
+      ],
+      "posicao": 2
+    },
+    {
+      "pergunta": "diferença de temperatura entre os mancais",
+      "ativo": "FZ-ATV-01",
+      "relevante": [
+        "DOC-07"
+      ],
+      "top5": [
+        "DOC-07§Quando aplicar",
+        "DOC-07§Hipóteses a investigar",
+        "DOC-06§Baseline operacional",
+        "DOC-07§Passos de verificação",
+        "DOC-01§Objetivo"
+      ],
+      "posicao": 1
+    },
+    {
+      "pergunta": "posso continuar operando com alarme ativo",
+      "ativo": null,
+      "relevante": [
+        "DOC-08"
+      ],
+      "top5": [
+        "DOC-08§Situações que exigem avaliação de profissional responsável",
+        "DOC-01§Zonas de severidade",
+        "DOC-03§Critério de escalonamento",
+        "DOC-04§Critério de escalonamento",
+        "DOC-05§Estados e ciclos operacionais"
+      ],
+      "posicao": 1
+    },
+    {
+      "pergunta": "procedimento de bloqueio e etiquetagem antes da manutenção",
+      "ativo": null,
+      "relevante": [
+        "DOC-08"
+      ],
+      "top5": [
+        "DOC-08§Bloqueio e etiquetagem (LOTO)",
+        "DOC-08§Situações que exigem avaliação de profissional responsável",
+        "DOC-04§Critério de escalonamento",
+        "OS-20230038",
+        "OS-20230037"
+      ],
+      "posicao": 1
+    },
+    {
+      "pergunta": "qual o fabricante e a potência do motor",
+      "ativo": "MTR-05",
+      "relevante": [
+        "DOC-09§Motor MTR-05"
+      ],
+      "top5": [
+        "DOC-09§Motor MTR-05",
+        "DOC-04§Ações corretivas",
+        "DOC-02§Ações corretivas",
+        "DOC-09§Visão geral",
+        "DOC-04§Sintomas típicos"
+      ],
+      "posicao": 1
+    },
+    {
+      "pergunta": "falha registrada de superaquecimento",
+      "ativo": "MTR-07",
+      "relevante": [
+        "EVT-MTR-07"
+      ],
+      "top5": [
+        "EVT-MTR-07-2023-01-03T20:10:00",
+        "DOC-03§Sintomas típicos",
+        "DOC-03§Verificações recomendadas",
+        "OS-20230011",
+        "DOC-03§Critério de escalonamento"
+      ],
+      "posicao": 1
+    },
+    {
+      "pergunta": "eventos de falha do motor",
+      "ativo": "MTR-12",
+      "relevante": [
+        "EVT-MTR-12"
+      ],
+      "top5": [
+        "DOC-09§Motor MTR-12",
+        "EVT-MTR-12-2023-01-05T12:00:00",
+        "DOC-04§Critério de escalonamento",
+        "DOC-04§Ações corretivas",
+        "DOC-04§Sintomas típicos"
+      ],
+      "posicao": 2
+    },
+    {
+      "pergunta": "ordem de serviço de balanceamento",
+      "ativo": "MTR-03",
+      "relevante": [
+        "OS-20230005"
+      ],
+      "top5": [
+        "OS-20230005",
+        "OS-20230033",
+        "DOC-02§Ações corretivas",
+        "DOC-02§Sintomas típicos",
+        "DOC-08§Registro"
+      ],
+      "posicao": 1
+    },
+    {
+      "pergunta": "histórico de manutenção preventiva lubrificação",
+      "ativo": "MTR-03",
+      "relevante": [
+        "OS-20230033"
+      ],
+      "top5": [
+        "OS-20230033",
+        "DOC-03§Verificações recomendadas",
+        "OS-20230005",
+        "DOC-03§Possíveis causas",
+        "DOC-04§Verificações recomendadas"
+      ],
+      "posicao": 1
+    },
+    {
+      "pergunta": "ciclo de operação mais longo com temperatura alta",
+      "ativo": "FZ-ATV-01",
+      "relevante": [
+        "CIC-6"
+      ],
+      "top5": [
+        "DOC-07§Passos de verificação",
+        "DOC-07§Quando aplicar",
+        "DOC-05§Estados e ciclos operacionais",
+        "DOC-01§Cuidados de interpretação",
+        "CIC-2"
+      ],
+      "posicao": null
+    },
+    {
+      "pergunta": "percentual de leituras sinalizadas no ciclo 6",
+      "ativo": "FZ-ATV-01",
+      "relevante": [
+        "CIC-6"
+      ],
+      "top5": [
+        "CIC-6",
+        "CIC-2",
+        "CIC-3",
+        "CIC-1",
+        "CIC-4"
+      ],
+      "posicao": 1
+    },
+    {
+      "pergunta": "houve histórico de manutenção do ativo da Forzy",
+      "ativo": "FZ-ATV-01",
+      "relevante": [
+        "DOC-05§Histórico"
+      ],
+      "top5": [
+        "DOC-05§Histórico de manutenção",
+        "DOC-02§Ações corretivas",
+        "DOC-01§Limites de referência para máquinas de 15 kW a 300 kW (grupo 2)",
+        "DOC-05§Identificação",
+        "DOC-03§Sintomas típicos"
+      ],
+      "posicao": 1
+    }
+  ],
+  "detalhes_hibrido_filtro_tipo": [
+    {
+      "pergunta": "quais os limites de vibração para base rígida",
+      "ativo": null,
+      "relevante": [
+        "DOC-01"
+      ],
+      "top5": [
+        "DOC-01§Limites de referência para máquinas de 15 kW a 300 kW (grupo 2)",
+        "DOC-06§Baseline operacional",
+        "DOC-01§Cuidados de interpretação",
+        "DOC-01§Zonas de severidade",
+        "DOC-06§Uso responsável"
+      ],
+      "posicao": 1
+    },
+    {
+      "pergunta": "o que significa zona D de severidade",
+      "ativo": null,
+      "relevante": [
+        "DOC-01"
+      ],
+      "top5": [
+        "DOC-01§Zonas de severidade",
+        "DOC-01§Objetivo",
+        "DOC-08§Situações que exigem avaliação de profissional responsável",
+        "DOC-01§Cuidados de interpretação",
+        "DOC-01§Limites de referência para máquinas de 15 kW a 300 kW (grupo 2)"
+      ],
+      "posicao": 1
+    },
+    {
+      "pergunta": "vibração alta com temperatura normal, o que pode ser",
+      "ativo": null,
+      "relevante": [
+        "DOC-02"
+      ],
+      "top5": [
+        "DOC-06§Classificador de falhas (Sprint 2)",
+        "DOC-01§Cuidados de interpretação",
+        "DOC-08§Situações que exigem avaliação de profissional responsável",
+        "DOC-04§Sintomas típicos",
+        "DOC-04§Verificações recomendadas"
+      ],
+      "posicao": null
+    },
+    {
+      "pergunta": "como fazer balanceamento do rotor",
+      "ativo": null,
+      "relevante": [
+        "DOC-02"
+      ],
+      "top5": [
+        "DOC-02§Ações corretivas",
+        "DOC-02§Sintomas típicos",
+        "DOC-02§Critério de escalonamento",
+        "DOC-02§Verificações iniciais (sem desmontagem)",
+        "DOC-06§Classificador de falhas (Sprint 2)"
+      ],
+      "posicao": 1
+    },
+    {
+      "pergunta": "temperatura e corrente subindo juntas no motor",
+      "ativo": null,
+      "relevante": [
+        "DOC-03"
+      ],
+      "top5": [
+        "DOC-03§Critério de escalonamento",
+        "DOC-06§Classificador de falhas (Sprint 2)",
+        "DOC-03§Sintomas típicos",
+        "DOC-02§Sintomas típicos",
+        "DOC-09§Motor MTR-06"
+      ],
+      "posicao": 1
+    },
+    {
+      "pergunta": "aletas sujas e ventilação obstruída",
+      "ativo": null,
+      "relevante": [
+        "DOC-03"
+      ],
+      "top5": [
+        "DOC-03§Possíveis causas",
+        "DOC-03§Verificações recomendadas",
+        "DOC-07§Hipóteses a investigar",
+        "DOC-02§Verificações iniciais (sem desmontagem)",
+        "DOC-02§Ações corretivas"
+      ],
+      "posicao": 1
+    },
+    {
+      "pergunta": "aceleração em g aumentando no mancal",
+      "ativo": null,
+      "relevante": [
+        "DOC-04"
+      ],
+      "top5": [
+        "DOC-04§Sintomas típicos",
+        "DOC-04§Verificações recomendadas",
+        "DOC-03§Sintomas típicos",
+        "DOC-05§Pontos de medição",
+        "DOC-01§Cuidados de interpretação"
+      ],
+      "posicao": 1
+    },
+    {
+      "pergunta": "ruído metálico e troca de rolamento",
+      "ativo": null,
+      "relevante": [
+        "DOC-04"
+      ],
+      "top5": [
+        "DOC-04§Critério de escalonamento",
+        "DOC-04§Ações corretivas",
+        "DOC-04§Verificações recomendadas",
+        "DOC-08§Princípio",
+        "DOC-06§Uso responsável"
+      ],
+      "posicao": 1
+    },
+    {
+      "pergunta": "quais sensores estão instalados nas portas do IO-Link",
+      "ativo": "FZ-ATV-01",
+      "relevante": [
+        "DOC-05"
+      ],
+      "top5": [
+        "DOC-05§Pontos de medição",
+        "DOC-01§Objetivo",
+        "DOC-02§Verificações iniciais (sem desmontagem)",
+        "DOC-05§Estados e ciclos operacionais",
+        "DOC-06§Baseline operacional"
+      ],
+      "posicao": 1
+    },
+    {
+      "pergunta": "qual o período de dados disponível do ativo da Forzy",
+      "ativo": "FZ-ATV-01",
+      "relevante": [
+        "DOC-05"
+      ],
+      "top5": [
+        "DOC-05§Período de dados disponível",
+        "DOC-05§Estados e ciclos operacionais",
+        "DOC-05§Identificação",
+        "DOC-01§Limites de referência para máquinas de 15 kW a 300 kW (grupo 2)",
+        "DOC-06§Classificador de falhas (Sprint 2)"
+      ],
+      "posicao": 1
+    },
+    {
+      "pergunta": "o isolation forest e o autoencoder discordam, por quê",
+      "ativo": null,
+      "relevante": [
+        "DOC-06"
+      ],
+      "top5": [
+        "DOC-06§Detecção de anomalias (Sprint 3)",
+        "DOC-01§Cuidados de interpretação",
+        "DOC-06§Classificador de falhas (Sprint 2)",
+        "DOC-04§Sintomas típicos",
+        "DOC-03§Critério de escalonamento"
+      ],
+      "posicao": 1
+    },
+    {
+      "pergunta": "o classificador da sprint 2 serve para o ativo real",
+      "ativo": null,
+      "relevante": [
+        "DOC-06"
+      ],
+      "top5": [
+        "DOC-06§Classificador de falhas (Sprint 2)",
+        "DOC-03§Sintomas típicos",
+        "DOC-01§Limites de referência para máquinas de 15 kW a 300 kW (grupo 2)",
+        "DOC-01§Cuidados de interpretação",
+        "DOC-02§Sintomas típicos"
+      ],
+      "posicao": 1
+    },
+    {
+      "pergunta": "porta 2 mais quente que a porta 1 fora do normal",
+      "ativo": "FZ-ATV-01",
+      "relevante": [
+        "DOC-07"
+      ],
+      "top5": [
+        "DOC-05§Pontos de medição",
+        "DOC-07§Quando aplicar",
+        "DOC-07§Critério de escalonamento",
+        "DOC-06§Baseline operacional",
+        "DOC-02§Verificações iniciais (sem desmontagem)"
+      ],
+      "posicao": 2
+    },
+    {
+      "pergunta": "diferença de temperatura entre os mancais",
+      "ativo": "FZ-ATV-01",
+      "relevante": [
+        "DOC-07"
+      ],
+      "top5": [
+        "DOC-07§Quando aplicar",
+        "DOC-07§Hipóteses a investigar",
+        "DOC-06§Baseline operacional",
+        "DOC-07§Passos de verificação",
+        "DOC-01§Objetivo"
+      ],
+      "posicao": 1
+    },
+    {
+      "pergunta": "posso continuar operando com alarme ativo",
+      "ativo": null,
+      "relevante": [
+        "DOC-08"
+      ],
+      "top5": [
+        "DOC-08§Situações que exigem avaliação de profissional responsável",
+        "DOC-01§Zonas de severidade",
+        "DOC-03§Critério de escalonamento",
+        "DOC-04§Critério de escalonamento",
+        "DOC-05§Estados e ciclos operacionais"
+      ],
+      "posicao": 1
+    },
+    {
+      "pergunta": "procedimento de bloqueio e etiquetagem antes da manutenção",
+      "ativo": null,
+      "relevante": [
+        "DOC-08"
+      ],
+      "top5": [
+        "DOC-08§Bloqueio e etiquetagem (LOTO)",
+        "DOC-08§Situações que exigem avaliação de profissional responsável",
+        "DOC-04§Critério de escalonamento",
+        "DOC-05§Histórico de manutenção",
+        "DOC-03§Critério de escalonamento"
+      ],
+      "posicao": 1
+    },
+    {
+      "pergunta": "qual o fabricante e a potência do motor",
+      "ativo": "MTR-05",
+      "relevante": [
+        "DOC-09§Motor MTR-05"
+      ],
+      "top5": [
+        "DOC-09§Motor MTR-05",
+        "DOC-04§Ações corretivas",
+        "DOC-02§Ações corretivas",
+        "DOC-09§Visão geral",
+        "DOC-04§Sintomas típicos"
+      ],
+      "posicao": 1
+    },
+    {
+      "pergunta": "falha registrada de superaquecimento",
+      "ativo": "MTR-07",
+      "relevante": [
+        "EVT-MTR-07"
+      ],
+      "top5": [
+        "EVT-MTR-07-2023-01-03T20:10:00",
+        "OS-20230011"
+      ],
+      "posicao": 1
+    },
+    {
+      "pergunta": "eventos de falha do motor",
+      "ativo": "MTR-12",
+      "relevante": [
+        "EVT-MTR-12"
+      ],
+      "top5": [
+        "EVT-MTR-12-2023-01-05T12:00:00",
+        "OS-20230018"
+      ],
+      "posicao": 1
+    },
+    {
+      "pergunta": "ordem de serviço de balanceamento",
+      "ativo": "MTR-03",
+      "relevante": [
+        "OS-20230005"
+      ],
+      "top5": [
+        "OS-20230005",
+        "OS-20230033",
+        "EVT-MTR-03-2023-01-07T09:00:00"
+      ],
+      "posicao": 1
+    },
+    {
+      "pergunta": "histórico de manutenção preventiva lubrificação",
+      "ativo": "MTR-03",
+      "relevante": [
+        "OS-20230033"
+      ],
+      "top5": [
+        "OS-20230033",
+        "OS-20230005",
+        "EVT-MTR-03-2023-01-07T09:00:00"
+      ],
+      "posicao": 1
+    },
+    {
+      "pergunta": "ciclo de operação mais longo com temperatura alta",
+      "ativo": "FZ-ATV-01",
+      "relevante": [
+        "CIC-6"
+      ],
+      "top5": [
+        "CIC-2",
+        "CIC-1",
+        "CIC-3",
+        "CIC-4",
+        "CIC-5"
+      ],
+      "posicao": null
+    },
+    {
+      "pergunta": "percentual de leituras sinalizadas no ciclo 6",
+      "ativo": "FZ-ATV-01",
+      "relevante": [
+        "CIC-6"
+      ],
+      "top5": [
+        "CIC-6",
+        "CIC-2",
+        "CIC-3",
+        "CIC-1",
+        "CIC-4"
+      ],
+      "posicao": 1
+    },
+    {
+      "pergunta": "houve histórico de manutenção do ativo da Forzy",
+      "ativo": "FZ-ATV-01",
+      "relevante": [
+        "DOC-05§Histórico"
+      ],
+      "top5": [
+        "DOC-05§Histórico de manutenção",
+        "DOC-02§Ações corretivas",
+        "DOC-01§Limites de referência para máquinas de 15 kW a 300 kW (grupo 2)",
+        "DOC-05§Identificação",
+        "DOC-03§Sintomas típicos"
+      ],
+      "posicao": 1
+    }
+  ]
+}

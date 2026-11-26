@@ -1,0 +1,15 @@
+C1   APROVADO     496.3 ms  Falha ou anomalia (obrigatório)
+C2   APROVADO       4.4 ms  Dados operacionais + documentação técnica (obrigatório)
+C3   APROVADO       3.0 ms  Informação insuficiente (obrigatório)
+C4   APROVADO      79.5 ms  Pergunta ambígua + continuação
+C5   APROVADO     125.2 ms  Diagnóstico por leitura + situação que exige profissional
+C6   APROVADO       0.5 ms  Filtro de período fora da cobertura
+C7   APROVADO    1106.1 ms  Avaliação de leitura do ativo real (padrão do Ciclo 6)
+C8   APROVADO      91.0 ms  Diagnóstico com janela real do banco (integração Sprint 2)
+C9   APROVADO      13.3 ms  Histórico de manutenção
+C10  APROVADO       4.8 ms  Procedimento técnico sem ativo
+C11  APROVADO       1.0 ms  Valor isolado (ambiguidade de contexto)
+C12  APROVADO       0.1 ms  Fora do escopo
+C13  APROVADO       0.0 ms  Comparação entre ativos (limitação conhecida)
+
+13/13 cenários aprovados. Log em resultados/cenarios_log.md

@@ -1,0 +1,15 @@
+palavras               {'hit@1': 0.458, 'hit@3': 0.667, 'mrr@5': 0.559}
+palavras + filtro      {'hit@1': 0.625, 'hit@3': 0.792, 'mrr@5': 0.715}
+caracteres             {'hit@1': 0.667, 'hit@3': 0.667, 'mrr@5': 0.677}
+caracteres + filtro    {'hit@1': 0.833, 'hit@3': 0.875, 'mrr@5': 0.854}
+hibrido                {'hit@1': 0.625, 'hit@3': 0.667, 'mrr@5': 0.665}
+hibrido + filtro       {'hit@1': 0.792, 'hit@3': 0.875, 'mrr@5': 0.833}
+hibrido + filtro + tipo {'hit@1': 0.875, 'hit@3': 0.917, 'mrr@5': 0.896}
+
+Perguntas fora do top-1 (híbrido + filtro): 5
+  - 'vibração alta com temperatura normal, o que pode ser': posição None | top3 ['DOC-06§Classificador de falhas (Sprint 2)', 'DOC-01§Cuidados de interpretação', 'DOC-08§Situações que exigem avaliação de profissional responsável']
+  - 'como fazer balanceamento do rotor': posição None | top3 ['OS-20230025', 'OS-20230020', 'OS-20230028']
+  - 'porta 2 mais quente que a porta 1 fora do normal': posição 2 | top3 ['DOC-05§Pontos de medição', 'DOC-07§Quando aplicar', 'DOC-07§Critério de escalonamento']
+  - 'eventos de falha do motor': posição 2 | top3 ['DOC-09§Motor MTR-12', 'EVT-MTR-12-2023-01-05T12:00:00', 'DOC-04§Critério de escalonamento']
+  - 'ciclo de operação mais longo com temperatura alta': posição None | top3 ['DOC-07§Passos de verificação', 'DOC-07§Quando aplicar', 'DOC-05§Estados e ciclos operacionais']
+Gráfico salvo em resultados/grafico_recuperacao.png

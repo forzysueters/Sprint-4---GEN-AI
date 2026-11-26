@@ -1,0 +1,572 @@
+[
+  {
+    "id": "C1",
+    "categoria": "Falha ou anomalia (obrigatório)",
+    "turnos": [
+      "O que aconteceu no ciclo 6 do FZ-ATV-01? Houve anomalia?"
+    ],
+    "esperado": "Identificar o Ciclo 6 (17,4 min), mostrar o percentual de leituras sinalizadas por cada modelo, explicar a divergência Autoencoder × Isolation Forest e citar documentação de interpretação.",
+    "status": "APROVADO",
+    "falhas": [],
+    "tempo_ms": [
+      605.2
+    ],
+    "respostas": [
+      {
+        "tipo": "resposta",
+        "texto": "Ciclos operacionais do FZ-ATV-01 (dados reais, sem rótulos de falha):\n  • Ciclo 6: 13:44–14:01, 17.4 min, temp. máx. P1/P2 39/43 °C, leituras sinalizadas pelo Autoencoder 53.5% e pelo Isolation Forest 5.8%\n  → O Ciclo 6 concentra o maior percentual de leituras anômalas segundo o Autoencoder. Não há falha confirmada: é um candidato a investigação.\n\nResultado dos modelos de anomalia (2028 leituras, 2026-05-19 13:44:28 a 2026-05-19 14:01:53):\n  • Autoencoder (semissupervisionado) sinalizou 53.5% das leituras\n  • Isolation Forest (não supervisionado) sinalizou 5.8%\n  • Baseline estatístico 3-sigma: 0.3%\n  • Leituras sinalizadas pelos dois modelos: 101\n  A divergência entre os modelos é esperada em anomalias longas e coesas: o Isolation Forest treinado com todo o histórico tende a tratá-las como normais [DOC-06].\n\nDocumentação técnica relacionada:\n  • [DOC-06 §Detecção de anomalias (Sprint 3)]: - Isolation Forest (não supervisionado, treinado com 100% do histórico) e Autoencoder (semissupervisionado, treinado sem o Ciclo 6). - O resultado é um score de desvio em relação ao comportamento histórico, não um diagnóstico de causa raiz. - Severidade combinada: ALTA quando os dois modelos sinalizam, MODERADA quando apenas um sinaliza, BAIXA quando nenhum sinaliza. - Divergência esperada: em anomalias longas e …\n  • [DOC-07 §Quando aplicar] (documento SIMULADO): Quando a diferença de temperatura entre a Porta 1 e a Porta 2 se afasta do offset histórico (Porta 2 cerca de 5,5 °C mais quente, desvio-padrão de 1,6 °C), especialmente durante ciclos longos de operação.\n  • [DOC-06 §Baseline operacional]: - Limites de 3 desvios-padrão calculados separadamente para repouso e operação. - Um z-score acima de 3 em qualquer sensor indica leitura fora do padrão histórico daquele estado. - A feature de maior contribuição para as anomalias do Ciclo 6 foi a diferença de temperatura entre as portas (diff_temp).\n  • [DOC-07 §Hipóteses a investigar] (documento SIMULADO): 1. Lubrificação desigual entre os dois mancais. 2. Pré-carga ou desalinhamento afetando apenas um dos lados. 3. Diferença de ventilação ou exposição a fonte de calor externa em um dos pontos. 4. Problema de fixação do sensor (contato térmico ruim) em uma das portas.",
+        "fontes": [
+          "conhecimento/gerado/ciclos_fz.csv (derivado de scores_anomalias.csv)",
+          "sprint3/scores_anomalias.csv",
+          "DOC-06 §Detecção de anomalias (Sprint 3) — Como interpretar os resultados dos modelos de IA [PROJETO] (score 0.291)",
+          "DOC-07 §Quando aplicar — Procedimento de troubleshooting — assimetria térmica entre pontos de medição [SIMULADO] (score 0.247)",
+          "DOC-06 §Baseline operacional — Como interpretar os resultados dos modelos de IA [PROJETO] (score 0.211)",
+          "DOC-07 §Hipóteses a investigar — Procedimento de troubleshooting — assimetria térmica entre pontos de medição [SIMULADO] (score 0.199)"
+        ],
+        "ferramentas": [
+          {
+            "ferramenta": "listar_eventos",
+            "argumentos": {
+              "ativo": "FZ-ATV-01"
+            }
+          },
+          {
+            "ferramenta": "resumo_anomalias",
+            "argumentos": {
+              "ativo": "FZ-ATV-01",
+              "ciclo": 6
+            }
+          },
+          {
+            "ferramenta": "buscar_documentos",
+            "argumentos": {
+              "consulta": "O que aconteceu no ciclo 6 do FZ-ATV-01? Houve anomalia? assimetria térmica diferença de temperatura entre portas interpretar divergência isolation forest autoencoder severidade",
+              "ativo": "FZ-ATV-01",
+              "k": 4,
+              "tipos": [
+                "documento"
+              ]
+            }
+          }
+        ],
+        "escalonar": false
+      }
+    ]
+  },
+  {
+    "id": "C2",
+    "categoria": "Dados operacionais + documentação técnica (obrigatório)",
+    "turnos": [
+      "Quais falhas o MTR-07 apresentou e como devo investigar?"
+    ],
+    "esperado": "Listar o evento de superaquecimento do MTR-07 com valores máximos e trazer verificações do procedimento de superaquecimento (DOC-03), citando as fontes.",
+    "status": "APROVADO",
+    "falhas": [],
+    "tempo_ms": [
+      4.8
+    ],
+    "respostas": [
+      {
+        "tipo": "resposta",
+        "texto": "Eventos de falha do MTR-07 (base sintética):\n  • Superaquecimento: 2023-01-03 20:10 a 2023-01-04 07:30 — vibração máx. 2.63 mm/s, temperatura máx. 113.4 °C, corrente máx. 20.58 A, rotação mín. 1704 RPM\n\nDocumentação técnica relacionada:\n  • [DOC-03 §Sintomas típicos] (documento SIMULADO): - Temperatura de carcaça ou mancal acima do histórico do ativo. - Em motores elétricos, aumento simultâneo de corrente (efeito Joule). - No modelo da Sprint 2, corresponde à classe 2 (Superaquecimento): temperatura acima de 85 °C e corrente acima de 15 A, com vibração baixa.\n  • [DOC-03 §Critério de escalonamento] (documento SIMULADO): Temperatura subindo de forma contínua sem estabilizar, ou cheiro de isolamento queimado: desligar com segurança conforme DOC-08 e acionar o responsável técnico. Intervenções elétricas exigem profissional habilitado.\n  • [DOC-03 §Verificações recomendadas] (documento SIMULADO): 1. Medir a corrente nas três fases e comparar com a corrente nominal de placa. 2. Verificar limpeza das aletas e funcionamento do ventilador. 3. Conferir temperatura ambiente e ventilação do local. 4. Verificar o plano de lubrificação e a última relubrificação registrada.\n  • [DOC-03 §Possíveis causas] (documento SIMULADO): - Sobrecarga mecânica do equipamento acionado. - Ventilação obstruída (tampa defletora, aletas sujas, ambiente quente). - Desequilíbrio ou subtensão na alimentação elétrica. - Lubrificação inadequada dos mancais (excesso ou falta de graxa).",
+        "fontes": [
+          "conhecimento/gerado/eventos_falha_mtr.csv (derivado de motor.db)",
+          "DOC-03 §Sintomas típicos — Procedimento de troubleshooting — superaquecimento [SIMULADO] (score 0.185)",
+          "DOC-03 §Critério de escalonamento — Procedimento de troubleshooting — superaquecimento [SIMULADO] (score 0.168)",
+          "DOC-03 §Verificações recomendadas — Procedimento de troubleshooting — superaquecimento [SIMULADO] (score 0.153)",
+          "DOC-03 §Possíveis causas — Procedimento de troubleshooting — superaquecimento [SIMULADO] (score 0.148)"
+        ],
+        "ferramentas": [
+          {
+            "ferramenta": "listar_eventos",
+            "argumentos": {
+              "ativo": "MTR-07"
+            }
+          },
+          {
+            "ferramenta": "buscar_documentos",
+            "argumentos": {
+              "consulta": "Quais falhas o MTR-07 apresentou e como devo investigar? troubleshooting Superaquecimento",
+              "ativo": "MTR-07",
+              "k": 4,
+              "tipos": [
+                "documento"
+              ]
+            }
+          }
+        ],
+        "escalonar": false
+      }
+    ]
+  },
+  {
+    "id": "C3",
+    "categoria": "Informação insuficiente (obrigatório)",
+    "turnos": [
+      "Quando foi feita a última troca de rolamento do FZ-ATV-01?"
+    ],
+    "esperado": "Informar que não há registros de manutenção para o ativo e não inventar data.",
+    "status": "APROVADO",
+    "falhas": [],
+    "tempo_ms": [
+      3.4
+    ],
+    "respostas": [
+      {
+        "tipo": "sem_informacao",
+        "texto": "Não há registros de manutenção (ordens de serviço) para o FZ-ATV-01 na base disponível. Por isso não é possível informar datas de intervenções, trocas de componentes ou lubrificações desse ativo.\n\nDocumentação técnica relacionada:\n  • [DOC-05 §Histórico de manutenção]: Nenhum registro de manutenção, falha confirmada ou ordem de serviço foi fornecido para este ativo.\n  • [DOC-04 §Ações corretivas] (documento SIMULADO): 1. Relubrificação conforme plano do fabricante. 2. Substituição do rolamento quando confirmado defeito, com registro do número do componente. 3. Alinhamento do acoplamento após a troca.\n  • [DOC-04 §Critério de escalonamento] (documento SIMULADO): Crescimento contínuo da aceleração ou ruído metálico audível: programar parada e acionar o responsável técnico. A troca de rolamentos deve ser feita com o equipamento bloqueado (DOC-08).\n  • [DOC-07 §Quando aplicar] (documento SIMULADO): Quando a diferença de temperatura entre a Porta 1 e a Porta 2 se afasta do offset histórico (Porta 2 cerca de 5,5 °C mais quente, desvio-padrão de 1,6 °C), especialmente durante ciclos longos de operação.",
+        "fontes": [
+          "conhecimento/historico_manutencao.csv (SIMULADO)",
+          "DOC-05 §Histórico de manutenção — Ficha técnica e instalação dos sensores — ativo FZ-ATV-01 [REAL] (score 0.246)",
+          "DOC-04 §Ações corretivas — Procedimento de troubleshooting — falha mecânica e rolamentos [SIMULADO] (score 0.184)",
+          "DOC-04 §Critério de escalonamento — Procedimento de troubleshooting — falha mecânica e rolamentos [SIMULADO] (score 0.181)",
+          "DOC-07 §Quando aplicar — Procedimento de troubleshooting — assimetria térmica entre pontos de medição [SIMULADO] (score 0.124)"
+        ],
+        "ferramentas": [
+          {
+            "ferramenta": "historico_manutencao",
+            "argumentos": {
+              "ativo": "FZ-ATV-01"
+            }
+          },
+          {
+            "ferramenta": "buscar_documentos",
+            "argumentos": {
+              "consulta": "Quando foi feita a última troca de rolamento do FZ-ATV-01? histórico de manutenção",
+              "ativo": "FZ-ATV-01",
+              "k": 4,
+              "tipos": [
+                "documento"
+              ]
+            }
+          }
+        ],
+        "escalonar": false
+      }
+    ]
+  },
+  {
+    "id": "C4",
+    "categoria": "Pergunta ambígua + continuação",
+    "turnos": [
+      "Como está o motor?",
+      "É o MTR-12. Quais foram as leituras e as falhas dele?"
+    ],
+    "esperado": "1º turno: pedir o ativo listando opções, sem consultar dados. 2º turno: responder com leituras e eventos do MTR-12.",
+    "status": "APROVADO",
+    "falhas": [],
+    "tempo_ms": [
+      0.1,
+      122.9
+    ],
+    "respostas": [
+      {
+        "tipo": "esclarecimento",
+        "texto": "Para responder preciso saber de qual ativo se trata. Ativos disponíveis:\n  • FZ-ATV-01 — ativo real da Forzy (vibração e temperatura, 19/05/2026)\n  • MTR-01 a MTR-20 — motores da base sintética (01/01 a 11/01/2023)\nExemplo: \"Quais falhas o MTR-07 apresentou?\"",
+        "fontes": [],
+        "ferramentas": [],
+        "escalonar": false
+      },
+      {
+        "tipo": "resposta",
+        "texto": "Leituras do MTR-12 — 1500 registros de 2023-01-01 00:00:00 a 2023-01-11 09:50:00:\n  • rotacao_rpm: mín. 1653.43 | média 1740.449 | máx. 1793.32 RPM\n  • vibracao_mm_s: mín. 1.707 | média 2.494 | máx. 9.567 mm/s\n  • temperatura_c: mín. 55.89 | média 62.345 | máx. 83.21 °C\n  • corrente_a: mín. 10.442 | média 12.025 | máx. 13.816 A\n  • Leituras rotuladas como falha no período: 66\n\nEventos de falha do MTR-12 (base sintética):\n  • Falha mecânica: 2023-01-05 12:00 a 2023-01-05 22:50 — vibração máx. 9.57 mm/s, temperatura máx. 83.2 °C, corrente máx. 13.28 A, rotação mín. 1653 RPM\n\nDocumentação técnica relacionada:\n  • [DOC-04 §Ações corretivas] (documento SIMULADO): 1. Relubrificação conforme plano do fabricante. 2. Substituição do rolamento quando confirmado defeito, com registro do número do componente. 3. Alinhamento do acoplamento após a troca.\n  • [DOC-04 §Critério de escalonamento] (documento SIMULADO): Crescimento contínuo da aceleração ou ruído metálico audível: programar parada e acionar o responsável técnico. A troca de rolamentos deve ser feita com o equipamento bloqueado (DOC-08).\n  • [DOC-04 §Sintomas típicos] (documento SIMULADO): - Aumento de aceleração RMS (g), sensível a impactos de alta frequência gerados por defeitos em pistas e esferas. - Aumento combinado de vibração e temperatura no mancal afetado. - Queda gradual de rotação sob carga constante, por aumento de atrito. - No modelo da Sprint 2, corresponde à classe 3 (Falha Mecânica): é o padrão de sinal mais gradual.\n  • [DOC-04 §Verificações recomendadas] (documento SIMULADO): 1. Comparar aceleração e velocidade entre os dois pontos de medição: o mancal com maior aceleração é o suspeito principal. 2. Verificar ruído anormal (ronco, chiado) com estetoscópio mecânico. 3. Conferir o intervalo de relubrificação e o tipo de graxa. 4. Verificar folgas e desalinhamento do acoplamento.",
+        "fontes": [
+          "sprint2/motor.db, tabela leituras (dados sintéticos)",
+          "conhecimento/gerado/eventos_falha_mtr.csv (derivado de motor.db)",
+          "DOC-04 §Ações corretivas — Procedimento de troubleshooting — falha mecânica e rolamentos [SIMULADO] (score 0.195)",
+          "DOC-04 §Critério de escalonamento — Procedimento de troubleshooting — falha mecânica e rolamentos [SIMULADO] (score 0.178)",
+          "DOC-04 §Sintomas típicos — Procedimento de troubleshooting — falha mecânica e rolamentos [SIMULADO] (score 0.163)",
+          "DOC-04 §Verificações recomendadas — Procedimento de troubleshooting — falha mecânica e rolamentos [SIMULADO] (score 0.156)"
+        ],
+        "ferramentas": [
+          {
+            "ferramenta": "consultar_leituras",
+            "argumentos": {
+              "ativo": "MTR-12"
+            }
+          },
+          {
+            "ferramenta": "listar_eventos",
+            "argumentos": {
+              "ativo": "MTR-12"
+            }
+          },
+          {
+            "ferramenta": "buscar_documentos",
+            "argumentos": {
+              "consulta": "É o MTR-12. Quais foram as leituras e as falhas dele? troubleshooting Falha mecânica",
+              "ativo": "MTR-12",
+              "k": 4,
+              "tipos": [
+                "documento"
+              ]
+            }
+          }
+        ],
+        "escalonar": false
+      }
+    ]
+  },
+  {
+    "id": "C5",
+    "categoria": "Diagnóstico por leitura + situação que exige profissional",
+    "turnos": [
+      "Motor com vibração 8.2 mm/s, temperatura 92 C, corrente 15.5 A, rotação 1720 RPM. Posso continuar operando?"
+    ],
+    "esperado": "Classificar com o modelo da Sprint 2, sinalizar baixa confiança e recomendar avaliação do profissional responsável (DOC-08), sem autorizar a operação.",
+    "status": "APROVADO",
+    "falhas": [],
+    "tempo_ms": [
+      176.5
+    ],
+    "respostas": [
+      {
+        "tipo": "resposta",
+        "texto": "Classificador de falhas (Sprint 2): Falha Mecanica com confiança de 58%\n  • Probabilidades: Normal 5%, Desbalanceamento 2%, Superaquecimento 35%, Falha Mecanica 58%\n  • Entrada: {'rotacao_rpm': 1720.0, 'vibracao_mm_s': 8.2, 'temperatura_c': 92.0, 'corrente_a': 15.5}\n  • Modelo treinado em dados SINTÉTICOS (Sprint 2); F1-Macro 0,955 no teste.\n\nConfiança abaixo de 60%: as probabilidades estão divididas entre classes. Trate o resultado como hipótese e confirme com inspeção em campo.\n\nDocumentação técnica relacionada:\n  • [DOC-04 §Ações corretivas] (documento SIMULADO): 1. Relubrificação conforme plano do fabricante. 2. Substituição do rolamento quando confirmado defeito, com registro do número do componente. 3. Alinhamento do acoplamento após a troca.\n  • [DOC-04 §Verificações recomendadas] (documento SIMULADO): 1. Comparar aceleração e velocidade entre os dois pontos de medição: o mancal com maior aceleração é o suspeito principal. 2. Verificar ruído anormal (ronco, chiado) com estetoscópio mecânico. 3. Conferir o intervalo de relubrificação e o tipo de graxa. 4. Verificar folgas e desalinhamento do acoplamento.\n  • [DOC-03 §Verificações recomendadas] (documento SIMULADO): 1. Medir a corrente nas três fases e comparar com a corrente nominal de placa. 2. Verificar limpeza das aletas e funcionamento do ventilador. 3. Conferir temperatura ambiente e ventilação do local. 4. Verificar o plano de lubrificação e a última relubrificação registrada.\n\nATENÇÃO — avaliação de profissional responsável: o assistente apoia a investigação, mas não autoriza intervenções. Decisões de parada, desmontagem, troca de componentes ou continuidade da operação devem ser tomadas pelo responsável técnico, com bloqueio e etiquetagem (LOTO) antes de qualquer intervenção [DOC-08 §Situações que exigem avaliação de profissional responsável].",
+        "fontes": [
+          "sprint2/modelo_falhas.joblib",
+          "DOC-04 §Ações corretivas — Procedimento de troubleshooting — falha mecânica e rolamentos [SIMULADO] (score 0.327)",
+          "DOC-04 §Verificações recomendadas — Procedimento de troubleshooting — falha mecânica e rolamentos [SIMULADO] (score 0.248)",
+          "DOC-03 §Verificações recomendadas — Procedimento de troubleshooting — superaquecimento [SIMULADO] (score 0.236)",
+          "DOC-08 §Situações que exigem avaliação de profissional responsável — Regras de segurança e escalonamento para intervenções [SIMULADO] (score 0.471)"
+        ],
+        "ferramentas": [
+          {
+            "ferramenta": "prever_falha_motor",
+            "argumentos": {
+              "rotacao_rpm": 1720.0,
+              "vibracao_mm_s": 8.2,
+              "temperatura_c": 92.0,
+              "corrente_a": 15.5
+            }
+          },
+          {
+            "ferramenta": "buscar_documentos",
+            "argumentos": {
+              "consulta": "troubleshooting Falha Mecanica sintomas verificações ações corretivas",
+              "k": 3,
+              "tipos": [
+                "documento"
+              ]
+            }
+          },
+          {
+            "ferramenta": "buscar_documentos",
+            "argumentos": {
+              "consulta": "situações que exigem avaliação de profissional responsável segurança escalonamento",
+              "k": 1,
+              "tipos": [
+                "documento"
+              ]
+            }
+          }
+        ],
+        "escalonar": true
+      }
+    ]
+  },
+  {
+    "id": "C6",
+    "categoria": "Filtro de período fora da cobertura",
+    "turnos": [
+      "Como estavam as leituras do FZ-ATV-01 em 10/03/2025?"
+    ],
+    "esperado": "Informar que não há dados no período e qual é a cobertura disponível.",
+    "status": "APROVADO",
+    "falhas": [],
+    "tempo_ms": [
+      0.6
+    ],
+    "respostas": [
+      {
+        "tipo": "sem_informacao",
+        "texto": "Não há dados do FZ-ATV-01 no período solicitado (2025-03-10 00:00 a 2025-03-10 23:59). O período disponível na base vai de 2026-05-19 11:46:10 a 2026-05-19 15:43:14. Não é possível afirmar como o ativo se comportou fora desse intervalo.",
+        "fontes": [
+          "Cobertura temporal da base (scores_anomalias.csv)"
+        ],
+        "ferramentas": [],
+        "escalonar": false
+      }
+    ]
+  },
+  {
+    "id": "C7",
+    "categoria": "Avaliação de leitura do ativo real (padrão do Ciclo 6)",
+    "turnos": [
+      "Leitura do FZ-ATV-01: P1 6,9 mm/s 0,50 g 38 °C; P2 7,1 mm/s 0,52 g 42 °C. Isso é anômalo?"
+    ],
+    "esperado": "Severidade MODERADA (Autoencoder sinaliza, Isolation Forest não), como na Sprint 3, e indicar o procedimento de assimetria térmica.",
+    "status": "APROVADO",
+    "falhas": [],
+    "tempo_ms": [
+      1718.5
+    ],
+    "respostas": [
+      {
+        "tipo": "resposta",
+        "texto": "Avaliação da leitura (FZ-ATV-01) — estado inferido: operação\n  • Severidade: MODERADA (1 de 2 modelos sinalizaram anomalia)\n  • Isolation Forest: score -0.0349 — não sinalizado\n  • Autoencoder: erro 0.7594 (limiar 0.2287) — sinalizado\n  • Desvios em relação ao baseline: p1_temperatura z=2.13, p2_temperatura z=2.84\n  Score de desvio estatístico, não diagnóstico de causa raiz (sem rótulos de falha).\n\nDocumentação técnica relacionada:\n  • [DOC-07 §Quando aplicar] (documento SIMULADO): Quando a diferença de temperatura entre a Porta 1 e a Porta 2 se afasta do offset histórico (Porta 2 cerca de 5,5 °C mais quente, desvio-padrão de 1,6 °C), especialmente durante ciclos longos de operação.\n  • [DOC-06 §Detecção de anomalias (Sprint 3)]: - Isolation Forest (não supervisionado, treinado com 100% do histórico) e Autoencoder (semissupervisionado, treinado sem o Ciclo 6). - O resultado é um score de desvio em relação ao comportamento histórico, não um diagnóstico de causa raiz. - Severidade combinada: ALTA quando os dois modelos sinalizam, MODERADA quando apenas um sinaliza, BAIXA quando nenhum sinaliza. - Divergência esperada: em anomalias longas e …\n  • [DOC-07 §Hipóteses a investigar] (documento SIMULADO): 1. Lubrificação desigual entre os dois mancais. 2. Pré-carga ou desalinhamento afetando apenas um dos lados. 3. Diferença de ventilação ou exposição a fonte de calor externa em um dos pontos. 4. Problema de fixação do sensor (contato térmico ruim) em uma das portas.",
+        "fontes": [
+          "sprint3/modelo_anomalias_isoforest.joblib",
+          "sprint3/modelo_autoencoder.pt",
+          "sprint3/baseline_operacional.json",
+          "DOC-07 §Quando aplicar — Procedimento de troubleshooting — assimetria térmica entre pontos de medição [SIMULADO] (score 0.28)",
+          "DOC-06 §Detecção de anomalias (Sprint 3) — Como interpretar os resultados dos modelos de IA [PROJETO] (score 0.243)",
+          "DOC-07 §Hipóteses a investigar — Procedimento de troubleshooting — assimetria térmica entre pontos de medição [SIMULADO] (score 0.236)"
+        ],
+        "ferramentas": [
+          {
+            "ferramenta": "avaliar_anomalia_sensor",
+            "argumentos": {
+              "p1_velocidade": 6.9,
+              "p1_aceleracao": 0.5,
+              "p1_temperatura": 38.0,
+              "p2_velocidade": 7.1,
+              "p2_aceleracao": 0.52,
+              "p2_temperatura": 42.0
+            }
+          },
+          {
+            "ferramenta": "buscar_documentos",
+            "argumentos": {
+              "consulta": "interpretar severidade autoencoder isolation forest assimetria térmica diferença de temperatura entre portas",
+              "ativo": "FZ-ATV-01",
+              "k": 3,
+              "tipos": [
+                "documento"
+              ]
+            }
+          }
+        ],
+        "escalonar": false
+      }
+    ]
+  },
+  {
+    "id": "C8",
+    "categoria": "Diagnóstico com janela real do banco (integração Sprint 2)",
+    "turnos": [
+      "Qual o diagnóstico do MTR-07 em 2023-01-04 06:00?"
+    ],
+    "esperado": "Usar as 5 últimas leituras reais do motor.db, prever Superaquecimento e comparar com o rótulo.",
+    "status": "APROVADO",
+    "falhas": [],
+    "tempo_ms": [
+      42.0
+    ],
+    "respostas": [
+      {
+        "tipo": "resposta",
+        "texto": "Classificador de falhas (Sprint 2): Superaquecimento com confiança de 100%\n  • Probabilidades: Normal 0%, Desbalanceamento 0%, Superaquecimento 100%, Falha Mecanica 0%\n  • Entrada: {'rotacao_rpm': 1724.57, 'vibracao_mm_s': 2.32, 'temperatura_c': 97.74, 'corrente_a': 17.42}\n  • Modelo treinado em dados SINTÉTICOS (Sprint 2); F1-Macro 0,955 no teste.\n  • Rótulo registrado no banco para esse instante: Superaquecimento\n\nDocumentação técnica relacionada:\n  • [DOC-03 §Verificações recomendadas] (documento SIMULADO): 1. Medir a corrente nas três fases e comparar com a corrente nominal de placa. 2. Verificar limpeza das aletas e funcionamento do ventilador. 3. Conferir temperatura ambiente e ventilação do local. 4. Verificar o plano de lubrificação e a última relubrificação registrada.\n  • [DOC-03 §Sintomas típicos] (documento SIMULADO): - Temperatura de carcaça ou mancal acima do histórico do ativo. - Em motores elétricos, aumento simultâneo de corrente (efeito Joule). - No modelo da Sprint 2, corresponde à classe 2 (Superaquecimento): temperatura acima de 85 °C e corrente acima de 15 A, com vibração baixa.\n  • [DOC-04 §Verificações recomendadas] (documento SIMULADO): 1. Comparar aceleração e velocidade entre os dois pontos de medição: o mancal com maior aceleração é o suspeito principal. 2. Verificar ruído anormal (ronco, chiado) com estetoscópio mecânico. 3. Conferir o intervalo de relubrificação e o tipo de graxa. 4. Verificar folgas e desalinhamento do acoplamento.\n  • [DOC-03 §Critério de escalonamento] (documento SIMULADO): Temperatura subindo de forma contínua sem estabilizar, ou cheiro de isolamento queimado: desligar com segurança conforme DOC-08 e acionar o responsável técnico. Intervenções elétricas exigem profissional habilitado.\n\nATENÇÃO — avaliação de profissional responsável: o assistente apoia a investigação, mas não autoriza intervenções. Decisões de parada, desmontagem, troca de componentes ou continuidade da operação devem ser tomadas pelo responsável técnico, com bloqueio e etiquetagem (LOTO) antes de qualquer intervenção [DOC-08 §Situações que exigem avaliação de profissional responsável].",
+        "fontes": [
+          "sprint2/modelo_falhas.joblib",
+          "sprint2/motor.db",
+          "DOC-03 §Verificações recomendadas — Procedimento de troubleshooting — superaquecimento [SIMULADO] (score 0.258)",
+          "DOC-03 §Sintomas típicos — Procedimento de troubleshooting — superaquecimento [SIMULADO] (score 0.18)",
+          "DOC-04 §Verificações recomendadas — Procedimento de troubleshooting — falha mecânica e rolamentos [SIMULADO] (score 0.163)",
+          "DOC-03 §Critério de escalonamento — Procedimento de troubleshooting — superaquecimento [SIMULADO] (score 0.155)",
+          "DOC-08 §Situações que exigem avaliação de profissional responsável — Regras de segurança e escalonamento para intervenções [SIMULADO] (score 0.471)"
+        ],
+        "ferramentas": [
+          {
+            "ferramenta": "prever_falha_motor",
+            "argumentos": {
+              "ativo": "MTR-07",
+              "timestamp": "2023-01-04T06:00:00"
+            }
+          },
+          {
+            "ferramenta": "buscar_documentos",
+            "argumentos": {
+              "consulta": "Qual o diagnóstico do MTR-07 em 2023-01-04 06:00? troubleshooting Superaquecimento verificações",
+              "ativo": "MTR-07",
+              "k": 4,
+              "tipos": [
+                "documento"
+              ]
+            }
+          },
+          {
+            "ferramenta": "buscar_documentos",
+            "argumentos": {
+              "consulta": "situações que exigem avaliação de profissional responsável segurança escalonamento",
+              "k": 1,
+              "tipos": [
+                "documento"
+              ]
+            }
+          }
+        ],
+        "escalonar": true
+      }
+    ]
+  },
+  {
+    "id": "C9",
+    "categoria": "Histórico de manutenção",
+    "turnos": [
+      "Qual o histórico de manutenção do MTR-03?"
+    ],
+    "esperado": "Listar as ordens de serviço do MTR-03, identificadas como SIMULADAS.",
+    "status": "APROVADO",
+    "falhas": [],
+    "tempo_ms": [
+      3.7
+    ],
+    "respostas": [
+      {
+        "tipo": "resposta",
+        "texto": "Histórico de manutenção do MTR-03 — 2 ordem(ns) de serviço (dados SIMULADOS):\n  • OS-20230033 (preventiva), 2023-01-05 20:00: Relubrificação dos mancais — Técnico C [proc. DOC-04]\n  • OS-20230005 (corretiva), 2023-01-08 01:10: Limpeza do rotor e balanceamento dinâmico em campo — Técnico C [proc. DOC-02]\n\nDocumentação técnica relacionada:\n  • [DOC-09 §Motor MTR-03] (documento SIMULADO): Motor MTR-03: fabricante ABB, modelo X100, potência nominal 72.9 kW, data de instalação cadastrada 2023-06-15.",
+        "fontes": [
+          "conhecimento/historico_manutencao.csv (SIMULADO)",
+          "DOC-09 §Motor MTR-03 — Ficha técnica dos motores MTR-01 a MTR-20 (base sintética) [SIMULADO] (score 0.188)"
+        ],
+        "ferramentas": [
+          {
+            "ferramenta": "historico_manutencao",
+            "argumentos": {
+              "ativo": "MTR-03"
+            }
+          },
+          {
+            "ferramenta": "buscar_documentos",
+            "argumentos": {
+              "consulta": "Qual o histórico de manutenção do MTR-03?",
+              "ativo": "MTR-03",
+              "k": 4,
+              "tipos": [
+                "documento"
+              ]
+            }
+          }
+        ],
+        "escalonar": false
+      }
+    ]
+  },
+  {
+    "id": "C10",
+    "categoria": "Procedimento técnico sem ativo",
+    "turnos": [
+      "Quais são os limites de vibração da ISO 10816 para base rígida?"
+    ],
+    "esperado": "Responder com a tabela de zonas do DOC-01 sem pedir ativo.",
+    "status": "APROVADO",
+    "falhas": [],
+    "tempo_ms": [
+      2.1
+    ],
+    "respostas": [
+      {
+        "tipo": "resposta",
+        "texto": "Documentação técnica relacionada:\n  • [DOC-01 §Limites de referência para máquinas de 15 kW a 300 kW (grupo 2)] (documento SIMULADO): Base rígida: A até 1,4 mm/s; B até 2,8 mm/s; C até 4,5 mm/s; D acima de 4,5 mm/s. Base flexível: A até 2,3 mm/s; B até 4,5 mm/s; C até 7,1 mm/s; D acima de 7,1 mm/s. O tipo de base do ativo FZ-ATV-01 não foi informado pela Forzy; por isso o assistente apresenta as duas faixas e não emite classificação definitiva de zona para esse ativo.\n  • [DOC-01 §Cuidados de interpretação] (documento SIMULADO): - Os limites valem para medição em regime permanente. Picos durante partida e parada (ramp-up/ramp-down) não devem ser classificados por esta tabela. - A tendência ao longo do tempo é mais informativa do que um valor isolado: um aumento de 25% em relação ao histórico do próprio ativo merece investigação mesmo dentro da zona B. - Aceleração RMS (g) é mais sensível a defeitos de rolamento em alta frequência e deve ser …\n  • [DOC-06 §Baseline operacional]: - Limites de 3 desvios-padrão calculados separadamente para repouso e operação. - Um z-score acima de 3 em qualquer sensor indica leitura fora do padrão histórico daquele estado. - A feature de maior contribuição para as anomalias do Ciclo 6 foi a diferença de temperatura entre as portas (diff_temp).\n  • [DOC-01 §Zonas de severidade] (documento SIMULADO): A norma classifica a vibração em quatro zonas: - Zona A: máquinas recém-comissionadas; condição boa. - Zona B: aceitável para operação contínua sem restrição. - Zona C: insatisfatória para operação contínua prolongada; programar intervenção. - Zona D: severidade suficiente para causar danos; ação imediata.",
+        "fontes": [
+          "DOC-01 §Limites de referência para máquinas de 15 kW a 300 kW (grupo 2) — Guia de severidade de vibração (referência ISO 10816-3) [SIMULADO] (score 0.278)",
+          "DOC-01 §Cuidados de interpretação — Guia de severidade de vibração (referência ISO 10816-3) [SIMULADO] (score 0.181)",
+          "DOC-06 §Baseline operacional — Como interpretar os resultados dos modelos de IA [PROJETO] (score 0.143)",
+          "DOC-01 §Zonas de severidade — Guia de severidade de vibração (referência ISO 10816-3) [SIMULADO] (score 0.138)"
+        ],
+        "ferramentas": [
+          {
+            "ferramenta": "buscar_documentos",
+            "argumentos": {
+              "consulta": "Quais são os limites de vibração da ISO 10816 para base rígida?",
+              "k": 4,
+              "tipos": [
+                "documento"
+              ]
+            }
+          },
+          {
+            "ferramenta": "buscar_documentos",
+            "argumentos": {
+              "consulta": "Quais são os limites de vibração da ISO 10816 para base rígida?",
+              "k": 3,
+              "tipos": [
+                "evento_falha",
+                "ciclo_operacional",
+                "ordem_servico"
+              ]
+            }
+          }
+        ],
+        "escalonar": false
+      }
+    ]
+  },
+  {
+    "id": "C11",
+    "categoria": "Valor isolado (ambiguidade de contexto)",
+    "turnos": [
+      "Uma vibração de 5,2 mm/s é problema?"
+    ],
+    "esperado": "Explicar a zona para base rígida e flexível e pedir ativo e demais leituras.",
+    "status": "APROVADO",
+    "falhas": [],
+    "tempo_ms": [
+      1.5
+    ],
+    "respostas": [
+      {
+        "tipo": "esclarecimento",
+        "texto": "Uma vibração de 5.2 mm/s, isoladamente, não permite um diagnóstico. Pela referência ISO 10816-3 (máquinas de 15 a 300 kW) ela ficaria na zona D se a base for rígida e na zona C se a base for flexível [DOC-01 §Limites de referência para máquinas de 15 kW a 300 kW (grupo 2)]. Os limites valem para regime permanente, não para partidas e paradas.\n\nPara uma avaliação com os modelos, informe:\n  • o ativo (FZ-ATV-01 ou MTR-01 a MTR-20), e\n  • as demais leituras: para FZ-ATV-01, velocidade/aceleração/temperatura das Portas 1 e 2; para motores MTR, rotação, vibração, temperatura e corrente.",
+        "fontes": [
+          "DOC-01 §Limites de referência para máquinas de 15 kW a 300 kW (grupo 2) — Guia de severidade de vibração (referência ISO 10816-3) [SIMULADO] (score 0.374)"
+        ],
+        "ferramentas": [
+          {
+            "ferramenta": "buscar_documentos",
+            "argumentos": {
+              "consulta": "zonas de severidade limites de referência base rígida base flexível",
+              "k": 1
+            }
+          }
+        ],
+        "escalonar": false
+      }
+    ]
+  },
+  {
+    "id": "C12",
+    "categoria": "Fora do escopo",
+    "turnos": [
+      "Qual o preço do rolamento 6205 no fornecedor?"
+    ],
+    "esperado": "Informar que a base não contém dados comerciais.",
+    "status": "APROVADO",
+    "falhas": [],
+    "tempo_ms": [
+      0.1
+    ],
+    "respostas": [
+      {
+        "tipo": "sem_informacao",
+        "texto": "Não tenho informações para responder a isso: a base do assistente não contém dados comerciais (preços, fornecedores, estoque ou prazos). Ela cobre dados de sensores, resultados dos modelos, histórico de manutenção e procedimentos técnicos. Consulte a área de suprimentos.",
+        "fontes": [],
+        "ferramentas": [],
+        "escalonar": false
+      }
+    ]
+  },
+  {
+    "id": "C13",
+    "categoria": "Comparação entre ativos (limitação conhecida)",
+    "turnos": [
+      "Compare as falhas do MTR-01 e do MTR-02."
+    ],
+    "esperado": "Comparação multiativo não implementada: o assistente deve pedir uma pergunta por ativo.",
+    "status": "APROVADO",
+    "falhas": [],
+    "tempo_ms": [
+      0.0
+    ],
+    "respostas": [
+      {
+        "tipo": "esclarecimento",
+        "texto": "A pergunta cita mais de um ativo (MTR-01, MTR-02). Faça uma pergunta por ativo para que eu filtre os dados corretamente.",
+        "fontes": [],
+        "ferramentas": [],
+        "escalonar": false
+      }
+    ]
+  }
+]

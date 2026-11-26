@@ -1,0 +1,12 @@
+# Assistente de Manutenção Forzy — Sprint 4 (testado com Python 3.13)
+# scikit-learn fixado em 1.8.0: os modelos .joblib das Sprints 2 e 3 foram serializados nessa versão
+scikit-learn==1.8.0
+numpy>=2.0
+pandas>=2.2
+joblib>=1.4
+torch>=2.2            # Autoencoder da Sprint 3 (CPU é suficiente)
+anthropic>=0.40       # modo LLM (opcional — sem chave o assistente roda em modo offline)
+streamlit>=1.40       # interface web
+matplotlib>=3.8       # gráficos da avaliação
+# Opcionais para reexecutar os notebooks das Sprints 2 e 3:
+# jupyter, seaborn, scipy, xgboost, lightgbm, imbalanced-learn

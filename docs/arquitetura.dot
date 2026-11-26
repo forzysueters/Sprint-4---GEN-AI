@@ -1,0 +1,30 @@
+digraph G {
+  rankdir=TB; fontname="Helvetica"; nodesep=0.3; ranksep=0.5; newrank=true;
+  node [shape=box style="rounded,filled" fontname="Helvetica" fontsize=10 fillcolor="#ffffff" color="#5c677d"];
+  edge [color="#5c677d" fontname="Helvetica" fontsize=8];
+  subgraph cluster_dados { label="1. Fontes de dados"; style="rounded,filled"; fillcolor="#eef4f8"; color="#a9c4d6"; fontsize=11;
+    db [label="motor.db (SQLite)\n20 motores MTR · 30.000 leituras\nSINTÉTICO (Sprint 2)"];
+    fz [label="Histórico IO-Link Forzy\nFZ-ATV-01 · 7.183 leituras\nREAL (Sprint 3)"];
+    docs [label="Documentação técnica\nDOC-01 … DOC-09 (Markdown)"];
+    os [label="Histórico de manutenção\n40 OS · SIMULADO"]; }
+  subgraph cluster_modelos { label="2. Modelos (Sprints 2 e 3)"; style="rounded,filled"; fillcolor="#f3f0f8"; color="#c3b6da"; fontsize=11;
+    rf [label="Random Forest\nclassificação de falhas"];
+    base [label="Baseline operacional\n3σ por estado"];
+    iso [label="Isolation Forest"];
+    ae [label="Autoencoder"]; }
+  subgraph cluster_rag { label="3. Camada RAG (Sprint 4)"; style="rounded,filled"; fillcolor="#fdf3e7"; color="#e3c08f"; fontsize=11;
+    prep [label="preparar_base.py\nchunking por seção + registros\nmetadados: ativo, período, origem"];
+    idx [label="Índice TF-IDF híbrido\npalavras (0,3) + caracteres (0,7)"];
+    ret [label="Recuperador\nfiltros ativo / período / tipo"]; }
+  subgraph cluster_ass { label="4. Assistente"; style="rounded,filled"; fillcolor="#edf6ee"; color="#a8cfae"; fontsize=11;
+    tools [label="7 ferramentas (ferramentas.py)\nconsultas diretas a motor.db,\nscores e histórico de OS"];
+    orq [label="Orquestrador (assistente.py)\nLLM Claude + tool use  |  offline por regras"];
+    fontes [label="Montagem de fontes\n+ regras de escalonamento"]; }
+  ui [label="Interfaces\nStreamlit (app.py) · CLI (cli.py)" fillcolor="#2a6f97" fontcolor="white" color="#2a6f97"];
+  user [label="Técnico /\nengenheiro" shape=ellipse fillcolor="#f7f7f7"];
+  db -> rf; fz -> base; fz -> iso; fz -> ae;
+  db -> prep; fz -> prep [label="ciclos+scores"]; docs -> prep; os -> prep;
+  prep -> idx -> ret -> tools;
+  rf -> tools; base -> tools; iso -> tools; ae -> tools;
+  tools -> orq [dir=both]; orq -> fontes -> ui; user -> ui [dir=both label="pergunta / resposta"];
+}

@@ -1,0 +1,15 @@
+[OK] modo llm
+[OK] duas ferramentas executadas no mesmo turno
+[OK] dois tool_result devolvidos ao modelo
+[OK] fontes coletadas pelo sistema
+[OK] system prompt e tools enviados
+
+Resposta formatada:
+Resumo: o Ciclo 6 ... [DOC-06]
+
+Fontes consultadas:
+  [1] sprint3/scores_anomalias.csv
+  [2] DOC-06 — Como interpretar os resultados dos modelos de IA (Detecção de anomalias (Sprint 3))
+  [3] scores_anomalias.csv — Ciclo 3 — FZ-ATV-01 (Ciclo 3)
+  [4] scores_anomalias.csv — Ciclo 4 — FZ-ATV-01 (Ciclo 4)
+  [5] scores_anomalias.csv — Ciclo 6 — FZ-ATV-01 (Ciclo 6)

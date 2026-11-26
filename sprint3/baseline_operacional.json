@@ -1,0 +1,91 @@
+{
+  "idle": {
+    "p1_velocidade": {
+      "media": 0.0729,
+      "desvio_padrao": 0.0849,
+      "limite_inferior_3sigma": 0,
+      "limite_superior_3sigma": 0.3276
+    },
+    "p1_aceleracao": {
+      "media": 0.0013,
+      "desvio_padrao": 0.0044,
+      "limite_inferior_3sigma": 0,
+      "limite_superior_3sigma": 0.0145
+    },
+    "p1_temperatura": {
+      "media": 33.2957,
+      "desvio_padrao": 5.3087,
+      "limite_inferior_3sigma": 17.3697,
+      "limite_superior_3sigma": 49.2217
+    },
+    "p2_velocidade": {
+      "media": 0.0768,
+      "desvio_padrao": 0.0982,
+      "limite_inferior_3sigma": 0,
+      "limite_superior_3sigma": 0.3713
+    },
+    "p2_aceleracao": {
+      "media": 0.0015,
+      "desvio_padrao": 0.0046,
+      "limite_inferior_3sigma": 0,
+      "limite_superior_3sigma": 0.0153
+    },
+    "p2_temperatura": {
+      "media": 39.0298,
+      "desvio_padrao": 4.186,
+      "limite_inferior_3sigma": 26.4717,
+      "limite_superior_3sigma": 51.5879
+    }
+  },
+  "running": {
+    "p1_velocidade": {
+      "media": 4.672,
+      "desvio_padrao": 2.4259,
+      "limite_inferior_3sigma": 0,
+      "limite_superior_3sigma": 11.9497
+    },
+    "p1_aceleracao": {
+      "media": 0.3524,
+      "desvio_padrao": 0.1894,
+      "limite_inferior_3sigma": 0,
+      "limite_superior_3sigma": 0.9205
+    },
+    "p1_temperatura": {
+      "media": 30.7188,
+      "desvio_padrao": 3.411,
+      "limite_inferior_3sigma": 20.4858,
+      "limite_superior_3sigma": 40.9518
+    },
+    "p2_velocidade": {
+      "media": 4.8935,
+      "desvio_padrao": 2.4548,
+      "limite_inferior_3sigma": 0,
+      "limite_superior_3sigma": 12.2579
+    },
+    "p2_aceleracao": {
+      "media": 0.3582,
+      "desvio_padrao": 0.1926,
+      "limite_inferior_3sigma": 0,
+      "limite_superior_3sigma": 0.936
+    },
+    "p2_temperatura": {
+      "media": 35.9343,
+      "desvio_padrao": 2.1337,
+      "limite_inferior_3sigma": 29.5332,
+      "limite_superior_3sigma": 42.3354
+    }
+  },
+  "cross_port": {
+    "diff_vel_media": -0.1187,
+    "diff_vel_std": 0.2105,
+    "diff_temp_media": -5.4604,
+    "diff_temp_std": 1.5773
+  },
+  "ciclo_tipico": {
+    "duracao_min_media": 2.95,
+    "duracao_min_std": 1.31,
+    "vel_max_p1_media": 5.8,
+    "temp_max_p1_media": 28.0,
+    "temp_max_p2_media": 34.6
+  }
+}
