@@ -127,7 +127,7 @@ secoes.append("""
     Gustavo Balbo — RM 561711<br>Vinicius Araujo — RM 564504
   </div>
   <div class="rod">Projeto de Manutenção Preditiva — IA Aplicada · Novembro de 2026<br>
-  Código-fonte: pasta <b>forzy-assistente/</b> entregue junto a este documento (ver README.md)</div>
+  Repositório: <b>https://github.com/forzysueters/Sprint-4---GEN-AI</b></div>
 </div>
 <div class="sumario">
 <h2 style="font-size:16pt;color:#12355b">Sumário</h2>
@@ -628,8 +628,8 @@ secoes.append("""
 <tr><td>matplotlib</td><td>≥ 3.8</td><td>Gráficos da avaliação</td></tr>
 </table>
 <h2>8.3 Instalação</h2>
-<pre>git clone &lt;url-do-repositorio&gt; forzy-assistente     # ou descompacte forzy-assistente.zip
-cd forzy-assistente
+<pre>git clone https://github.com/forzysueters/Sprint-4---GEN-AI.git
+cd Sprint-4---GEN-AI          # ou descompacte forzy-assistente.zip
 python -m venv .venv
 source .venv/bin/activate        # Windows: .venv\\Scripts\\activate
 pip install -r requirements.txt</pre>
@@ -721,8 +721,8 @@ secoes.append("""
 # ─── 10. ORGANIZAÇÃO ─────────────────────────────────────────────────────────
 secoes.append("""
 <h1 id="s10">10. Organização da entrega final</h1>
-<p>A entrega é composta por este documento em PDF e pelo código-fonte na pasta <code>forzy-assistente/</code>
-(arquivo <code>forzy-assistente.zip</code>), que contém o <code>README.md</code> com visão geral, estrutura e instruções.</p>
+<p>A entrega é composta por este documento em PDF e pelo código-fonte no repositório
+<b>https://github.com/forzysueters/Sprint-4---GEN-AI</b> (também enviado como <code>forzy-assistente.zip</code>), cujo <code>README.md</code> traz visão geral, estrutura e instruções.</p>
 <pre>forzy-assistente/
 ├── README.md · requirements.txt · .env.example · .gitignore
 ├── app.py · cli.py
@@ -741,9 +741,8 @@ secoes.append("""
 <tr><td>Relatórios das Sprints 2 e 3 e notebooks</td><td><code>sprint2/</code>, <code>sprint3/</code> (notebooks executados)</td></tr>
 <tr><td>Diagrama de arquitetura editável</td><td><code>docs/arquitetura.dot</code> (Graphviz)</td></tr>
 </table>
-<div class="nota"><b>Pendente para a equipe antes do envio:</b> publicar a pasta em um repositório (GitHub) acessível aos
-avaliadores e substituir <code>&lt;url-do-repositorio&gt;</code> no README e na seção 8.3; o arquivo bruto
-<code>forzy_history.csv</code> não estava no pacote da Sprint 3 recebido e deve ser incluído no repositório se a Forzy autorizar.</div>
+<div class="nota"><b>Observação:</b> o arquivo bruto <code>forzy_history.csv</code> não estava no pacote da Sprint 3 e não
+acompanha o repositório; o assistente usa <code>sprint3/scores_anomalias.csv</code>, que contém as mesmas 7.183 leituras processadas.</div>
 """)
 
 doc = f"<!DOCTYPE html><html lang='pt-BR'><head><meta charset='utf-8'><style>{CSS}</style></head><body>{''.join(secoes)}</body></html>"

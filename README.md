@@ -5,7 +5,8 @@ Combina **dados de sensores**, **histórico operacional**, **modelos de IA** (Sp
 **documentação técnica** (RAG — Retrieval-Augmented Generation) em um assistente conversacional
 que sempre apresenta as fontes consultadas.
 
-> Documentação completa: `docs/Documentacao_Final_Sprint4_Forzy.pdf`
+> Repositório: https://github.com/forzysueters/Sprint-4---GEN-AI  
+> Documentação completa: [`docs/Documentacao_Final_Sprint4_Forzy.pdf`](docs/Documentacao_Final_Sprint4_Forzy.pdf)
 
 ## O que a solução faz
 
@@ -63,6 +64,8 @@ forzy-assistente/
 Pré-requisitos: Python 3.11+ (testado em 3.13), ~2 GB livres (PyTorch).
 
 ```bash
+git clone https://github.com/forzysueters/Sprint-4---GEN-AI.git
+cd Sprint-4---GEN-AI
 python -m venv .venv
 source .venv/bin/activate          # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
